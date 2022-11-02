@@ -1,4 +1,4 @@
-package com.kipronodeveloper.onlinecarhire.activities
+package com.kipronohillary.carhire.activities
 
 import android.app.ProgressDialog
 import android.content.Context
@@ -7,23 +7,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.database.*
-import com.kipronohillary.carhire.adapters.CarRecyclerAdapter
-import com.kipronodeveloper.onlinecarhire.databinding.ActivityDisplayCarsBinding
 import com.kipronodeveloper.onlinecarhire.models.CarRecylcer
+import com.kipronohillary.carhire.R
+import com.kipronohillary.carhire.adapters.CarRecyclerAdapter
+import com.kipronohillary.carhire.databinding.ActivityHomeBinding
 
-
-class DisplayCarsActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
     private lateinit var dbRef: DatabaseReference
-     var context: Context? = null
+    var context: Context? = null
     private lateinit var  mAdapter: CarRecyclerAdapter
-    private lateinit var binding: ActivityDisplayCarsBinding
+    private lateinit var binding: ActivityHomeBinding
     private lateinit var carArrayList : ArrayList<CarRecylcer>
     private lateinit var progressDialog: ProgressDialog
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDisplayCarsBinding.inflate(layoutInflater)
+        binding=ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //config progress dialog
@@ -49,7 +47,7 @@ class DisplayCarsActivity : AppCompatActivity() {
         dbRef = FirebaseDatabase.getInstance().getReference("car_Items")
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                
+
                 if (snapshot.exists()) {
                     progressDialog.dismiss()
                     for (cars in snapshot.children) {
@@ -60,12 +58,12 @@ class DisplayCarsActivity : AppCompatActivity() {
 
                     }
 
-                     mAdapter = CarRecyclerAdapter(applicationContext,carArrayList)
+                    mAdapter = CarRecyclerAdapter(applicationContext,carArrayList)
                     binding.recyclerview.adapter = mAdapter
 
 
                     mAdapter.onItemClick={
-                        val intent=Intent(this@DisplayCarsActivity,ViewCarActivity::class.java)
+                        val intent= Intent(this@HomeActivity,ViewCarDetailsActivity::class.java)
                         intent.putExtra("car",it)
                         startActivity(intent)
                     }
@@ -86,7 +84,5 @@ class DisplayCarsActivity : AppCompatActivity() {
             }
 
         })
-
     }
 }
-

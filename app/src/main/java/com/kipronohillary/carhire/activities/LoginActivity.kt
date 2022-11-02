@@ -2,7 +2,8 @@ package com.kipronodeveloper.onlinecarhire.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.kipronodeveloper.onlinecarhire.R
+
+import com.kipronohillary.carhire.R
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

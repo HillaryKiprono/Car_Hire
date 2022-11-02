@@ -15,8 +15,8 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import com.kipronodeveloper.onlinecarhire.databinding.ActivityAddCarBinding
 import com.kipronodeveloper.onlinecarhire.models.CarDetails
+import com.kipronohillary.carhire.databinding.ActivityAddCarBinding
 import java.util.*
 
 class AddCarActivity : AppCompatActivity() {
@@ -24,7 +24,7 @@ class AddCarActivity : AppCompatActivity() {
     private lateinit var progressDialog: ProgressDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityAddCarBinding.inflate(layoutInflater)
+        binding= ActivityAddCarBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //config progress dialog

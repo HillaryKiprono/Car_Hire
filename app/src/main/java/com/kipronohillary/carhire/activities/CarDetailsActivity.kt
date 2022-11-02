@@ -1,17 +1,15 @@
-package com.kipronodeveloper.onlinecarhire.activities
+package com.kipronohillary.carhire.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
 import android.widget.TextView
-import com.kipronodeveloper.onlinecarhire.R
 import com.kipronodeveloper.onlinecarhire.models.CarRecylcer
+import com.kipronohillary.carhire.R
 
-class CarDetActivity : AppCompatActivity() {
+class CarDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_car_det)
-
+        setContentView(R.layout.activity_car_details)
 
         val food=intent.getParcelableExtra<CarRecylcer>("car")
         if(food!=null) {

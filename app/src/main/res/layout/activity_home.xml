@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.DisplayCarsActivity">
+    tools:context=".activities.HomeActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -51,7 +51,7 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                 android:layout_below="@id/shopping_cart"
+                android:layout_below="@id/shopping_cart"
                 android:orientation="horizontal">
 
                 <EditText
@@ -98,18 +98,18 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-<!--            <EditText-->
-<!--                android:id="@+id/search_item_bar"-->
-<!--                android:layout_width="150dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@id/shopping_cart"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:background="@drawable/search_bar_shape"-->
-<!--                android:drawableStart="@drawable/ic_baseline_search_24"-->
-<!--                android:drawablePadding="10dp"-->
-<!--                android:hint="Search Car"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textColorHint="@color/white" />-->
+            <!--            <EditText-->
+            <!--                android:id="@+id/search_item_bar"-->
+            <!--                android:layout_width="150dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@id/shopping_cart"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                android:background="@drawable/search_bar_shape"-->
+            <!--                android:drawableStart="@drawable/ic_baseline_search_24"-->
+            <!--                android:drawablePadding="10dp"-->
+            <!--                android:hint="Search Car"-->
+            <!--                android:textColor="@color/white"-->
+            <!--                android:textColorHint="@color/white" />-->
         </RelativeLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -127,4 +127,5 @@
 
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         app:spanCount="2"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

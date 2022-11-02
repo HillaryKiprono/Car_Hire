@@ -1,8 +1,8 @@
-package com.kipronodeveloper.onlinecarhire.activities
+package com.kipronohillary.carhire.activities
 
 import android.app.Activity
 import android.app.ProgressDialog
-import android.content.ContentValues.TAG
+import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -13,31 +13,31 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import com.kipronodeveloper.onlinecarhire.databinding.ActivityRegistrationBinding
+import com.kipronodeveloper.onlinecarhire.activities.LoginActivity
+import com.kipronohillary.carhire.R
+import com.kipronohillary.carhire.databinding.ActivityRegisterBinding
+
 import java.util.*
 
-class RegistrationActivity : AppCompatActivity() {
-    private lateinit var binding:ActivityRegistrationBinding
+class RegisterActivity : AppCompatActivity() {
+    private lateinit var binding:ActivityRegisterBinding
     private lateinit var progressDialog: ProgressDialog
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityRegistrationBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
+        setContentView(R.layout.activity_register)
         //config progress dialog
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Please wait and ensure you have Strong internet connection")
         progressDialog.setMessage("Creating an account...")
         progressDialog.setCanceledOnTouchOutside(false)
 
-       binding.regBtn.setOnClickListener {
-           progressDialog.show()
-           performRegister()
+        binding.regBtn.setOnClickListener {
+            progressDialog.show()
+            performRegister()
         }
 
         binding.alreadyHaveAccountTextView.setOnClickListener {
-            Log.d(TAG, "Try to show login activity")
+            Log.d(ContentValues.TAG, "Try to show login activity")
 
             // launch the login activity somehow
             val intent = Intent(this, LoginActivity::class.java)
@@ -45,7 +45,7 @@ class RegistrationActivity : AppCompatActivity() {
         }
 
         binding.selectphotoButtonRegister.setOnClickListener {
-           // Log.d(TAG, "Try to show photo selector")
+            // Log.d(TAG, "Try to show photo selector")
 
             Log.d("RegistrationAc","Trying to show photo selector")
 
@@ -62,7 +62,7 @@ class RegistrationActivity : AppCompatActivity() {
 
         if (requestCode == 0 && resultCode == Activity.RESULT_OK && data != null) {
             // proceed and check what the selected image was....
-            Log.d(TAG, "Photo was selected")
+            Log.d(ContentValues.TAG, "Photo was selected")
 
             selectedPhotoUri = data.data
 
@@ -86,7 +86,7 @@ class RegistrationActivity : AppCompatActivity() {
             return
         }
 
-        Log.d(TAG, "Attempting to create user with email: $email")
+        Log.d(ContentValues.TAG, "Attempting to create user with email: $email")
 
         // Firebase Authentication to create a user with email and password
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
@@ -94,12 +94,12 @@ class RegistrationActivity : AppCompatActivity() {
                 if (!it.isSuccessful) return@addOnCompleteListener
 
                 // else if successful
-                Log.d(TAG, "Successfully created user with uid: ${it.result.user?.uid}")
+                Log.d(ContentValues.TAG, "Successfully created user with uid: ${it.result.user?.uid}")
 
                 uploadImageToFirebaseStorage()
             }
             .addOnFailureListener{
-                Log.d(TAG, "Failed to create user: ${it.message}")
+                Log.d(ContentValues.TAG, "Failed to create user: ${it.message}")
                 Toast.makeText(this, "Failed to create user: ${it.message}", Toast.LENGTH_SHORT).show()
             }
     }
@@ -112,16 +112,16 @@ class RegistrationActivity : AppCompatActivity() {
 
         ref.putFile(selectedPhotoUri!!)
             .addOnSuccessListener {
-                Log.d(TAG, "Successfully uploaded image: ${it.metadata?.path}")
+                Log.d(ContentValues.TAG, "Successfully uploaded image: ${it.metadata?.path}")
 
                 ref.downloadUrl.addOnSuccessListener {
-                    Log.d(TAG, "File Location: $it")
+                    Log.d(ContentValues.TAG, "File Location: $it")
 
                     saveUserToFirebaseDatabase(it.toString())
                 }
             }
             .addOnFailureListener {
-                Log.d(TAG, "Failed to upload image to storage: ${it.message}")
+                Log.d(ContentValues.TAG, "Failed to upload image to storage: ${it.message}")
             }
     }
 
@@ -132,14 +132,15 @@ class RegistrationActivity : AppCompatActivity() {
         val user= User(uid,binding.usernameEdittextRegister.text.toString(),profileImageUrl)
         ref.setValue(user)
             .addOnSuccessListener {
-               progressDialog.dismiss()
-                Log.d(TAG, "Finally we saved the user to Firebase Database")
+                progressDialog.dismiss()
+                Log.d(ContentValues.TAG, "Finally we saved the user to Firebase Database")
             }
             .addOnFailureListener {
-               progressDialog.dismiss()
-                Log.d(TAG, "Failed to set value to database: ${it.message}")
+                progressDialog.dismiss()
+                Log.d(ContentValues.TAG, "Failed to set value to database: ${it.message}")
             }
 
     }
 }
-class User(val uid: String, val username: String, val profileImageUrl: String)
+class User(val uid: String, val username: String, val profileImageUrl: String){
+    }
