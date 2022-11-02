@@ -1,4 +1,4 @@
-package com.kipronodeveloper.onlinecarhire.insertImageAndRetrieve
+package com.kipronohillary.carhire.activities
 
 import android.app.Activity
 import android.content.ContentValues
@@ -15,15 +15,14 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.kipronodeveloper.onlinecarhire.models.ImageTest
 import com.kipronohillary.carhire.R
-import java.util.UUID
+import java.util.*
 
 class InsertActivity : AppCompatActivity() {
-
-    private lateinit var image:ImageView
-
+    private lateinit var image: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_insert)
+
 
         image=findViewById(R.id.selectImageTest)
         image.setOnClickListener{
@@ -34,11 +33,11 @@ class InsertActivity : AppCompatActivity() {
     }
 
     private fun loadGallery() {
-        val intent=Intent(Intent.ACTION_PICK)
+        val intent= Intent(Intent.ACTION_PICK)
         intent.type="image/*"
         startActivityForResult(intent,0)
     }
-   var selectedPhotoUri:Uri?=null
+    var selectedPhotoUri: Uri?=null
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode==0 && resultCode== Activity.RESULT_OK &&data!=null) {
@@ -53,8 +52,8 @@ class InsertActivity : AppCompatActivity() {
 
     private fun uploadImage() {
         if(selectedPhotoUri==null)return
-        var imageFile=UUID.randomUUID().toString()
-        var firestore=FirebaseStorage.getInstance().getReference("/ImagesTest2/$imageFile")
+        var imageFile= UUID.randomUUID().toString()
+        var firestore= FirebaseStorage.getInstance().getReference("/ImagesTest2/$imageFile")
         firestore.putFile(selectedPhotoUri!!).addOnSuccessListener{
 
             firestore.downloadUrl.addOnSuccessListener {
@@ -69,12 +68,12 @@ class InsertActivity : AppCompatActivity() {
 
     private fun saveToRealTime(carUrl: String) {
         val uid= FirebaseAuth.getInstance().uid?:""
-        var databaseRef=FirebaseDatabase.getInstance().getReference("/cImages/$uid").push()
+        var databaseRef= FirebaseDatabase.getInstance().getReference("/cImages/$uid").push()
         var carItem= ImageTest(uid,carUrl)
         databaseRef.setValue(carItem).addOnSuccessListener {
             Log.d(ContentValues.TAG, "Finally we saved the user to Firebase Database")
 
             Toast.makeText(this, "New Car item Saved Successfully", Toast.LENGTH_SHORT).show()
+        }
     }
-}
 }
