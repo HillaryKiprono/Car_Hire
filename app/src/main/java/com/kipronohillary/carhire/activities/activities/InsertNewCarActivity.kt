@@ -1,4 +1,4 @@
-package com.kipronohillary.carhire.activities
+package com.kipronohillary.carhire.activities.activities
 
 import android.app.Activity
 import android.app.ProgressDialog

@@ -14,13 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarHire"
         tools:targetApi="31" >
-
         <activity
-            android:name=".activities.InsertNewCarActivity"
+            android:name=".activities.activities.InsertNewCarActivity"
+            android:exported="false"
+            android:label="@string/title_activity_dashboard"
+            android:theme="@style/Theme.CarHire.NoActionBar" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.activities.DashboardActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
