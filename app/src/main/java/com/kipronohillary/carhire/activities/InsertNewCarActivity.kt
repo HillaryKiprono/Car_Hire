@@ -26,6 +26,7 @@ class InsertNewCarActivity : AppCompatActivity() {
     private lateinit var c_model: String
     private lateinit var c_hire_price: String
     private lateinit var c_seat_capacity: String
+    private lateinit var car_description: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityInsertNewCarBinding.inflate(layoutInflater)
@@ -52,6 +53,7 @@ class InsertNewCarActivity : AppCompatActivity() {
         c_model=binding.carModel.text.toString()
         c_hire_price=binding.carPrice.text.toString()
         c_seat_capacity=binding.carSeatingCapacity.text.toString()
+        car_description=binding.description.text.toString()
 
 
         if(TextUtils.isEmpty(c_name)){
@@ -66,6 +68,9 @@ class InsertNewCarActivity : AppCompatActivity() {
         }
         else if(TextUtils.isEmpty(c_seat_capacity)){
             Toast.makeText(this, "car Seating Capacity required", Toast.LENGTH_SHORT).show()
+        }
+        else if(TextUtils.isEmpty(car_description)){
+            Toast.makeText(this, "car description is required", Toast.LENGTH_SHORT).show()
         }
         else{
 
@@ -91,7 +96,7 @@ class InsertNewCarActivity : AppCompatActivity() {
        progressDialog.show()
         val uid=FirebaseAuth.getInstance().uid?:""
         var databaseReference=FirebaseDatabase.getInstance().getReference("/Car_Items/$uid").push()
-        var carItem= CarDetails(uid,c_name,c_model,c_hire_price,c_seat_capacity,carImageUrl)
+        var carItem= CarDetails(uid,c_name,c_model,c_hire_price,c_seat_capacity,car_description,carImageUrl)
         databaseReference.setValue(carItem).addOnSuccessListener { 
             progressDialog.dismiss()
             Toast.makeText(this, "New Car item Saved Successfully", Toast.LENGTH_SHORT).show()

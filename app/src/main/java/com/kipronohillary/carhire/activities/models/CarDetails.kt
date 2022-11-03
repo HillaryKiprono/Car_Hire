@@ -6,6 +6,7 @@ class CarDetails(
     val car_model: String,
     val car_hire_price: String,
     val car_seat_capacity: String,
-    val carImageUrl: String
+    val carImageUrl: String,
+    val carDescription: String
 ) {
 }
