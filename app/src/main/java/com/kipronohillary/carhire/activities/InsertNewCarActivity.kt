@@ -1,13 +1,12 @@
-package com.kipronodeveloper.onlinecarhire.activities
+package com.kipronohillary.carhire.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
 import com.kipronohillary.carhire.R
 
-class LoginActivity : AppCompatActivity() {
+class InsertNewCarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_insert_new_car)
     }
 }
