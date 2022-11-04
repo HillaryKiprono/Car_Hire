@@ -15,7 +15,7 @@
         android:theme="@style/Theme.CarHire"
         tools:targetApi="31">
         <activity
-            android:name=".activities.models.activities.DashboardActivity"
+            android:name=".activities.models.activities.CarDetailsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -36,7 +36,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activities.models.activities.CarDetailsActivity"
+            android:name=".activities.models.activities.DashboardActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

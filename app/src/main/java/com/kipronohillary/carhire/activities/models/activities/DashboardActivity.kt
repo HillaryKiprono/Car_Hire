@@ -67,9 +67,15 @@ class DashboardActivity : AppCompatActivity() {
 
 //                    mAdapter.onItemClick={
 //                        val intent= Intent(this@DashboardActivity,ViewCarDetailsActivity::class.java)
-//                       // intent.putExtra("car",it)
+//                        intent.putExtra("car",it)
 //                        startActivity(intent)
 //                    }
+
+                    mAdapter.onItemClick={
+                        val intent=Intent(this@DashboardActivity,CarDetailsActivity::class.java)
+                        intent.putExtra("car",it)
+                        startActivity(intent)
+                    }
 
 
 
