@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/carImagecart" />
 
-    <EditText
+    <TextView
         android:id="@+id/carpricecart"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -30,9 +30,8 @@
         android:background="@drawable/input_design"
         android:ems="10"
         android:text="ksh 2500"
-        android:textAlignment="center"
-        android:editable="false"
-        android:inputType="textPersonName"
+      android:textAlignment="center"
+        android:layout_margin="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView"
@@ -51,7 +50,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <EditText
+    <TextView
         android:id="@+id/carmodelcart"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -62,8 +61,6 @@
         android:ems="10"
         android:text="Nissan"
         android:textAlignment="center"
-        android:editable="false"
-        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView2"
@@ -82,7 +79,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <EditText
+    <TextView
         android:id="@+id/carcapacitycart"
         android:layout_width="150dp"
         android:layout_height="50dp"
@@ -95,7 +92,6 @@
         android:text="14"
         android:textSize="24sp"
         android:textAlignment="center"
-        android:editable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toEndOf="@+id/textView3"
@@ -114,7 +110,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <EditText
+    <TextView
         android:id="@+id/cardescriptioncart"
         android:layout_width="200dp"
         android:layout_height="100dp"
@@ -127,7 +123,7 @@
         android:text="Image result for fielder description
 The Corolla Fielder, a 5-door station wagon released at the same time as the ninth-generation Corolla sedan, was the fourth-generation model of the Corolla wagon."
         android:inputType="textMultiLine"
-        android:editable="false"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -147,8 +143,8 @@ The Corolla Fielder, a 5-door station wagon released at the same time as the nin
 
     <ImageView
         android:id="@+id/carImagecart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/input_type"
         app:layout_constraintEnd_toEndOf="parent"

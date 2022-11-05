@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 import com.kipronohillary.carhire.R
+import com.kipronohillary.carhire.activities.models.activities.ViewCarDetailsActivity
 import com.kipronohillary.carhire.activities.models.models.CarDetails
 
 
@@ -33,7 +35,7 @@ class CarRecyclerAdapter(
         var currentcar=carArrayList[position]
 
         holder.cName.text=currentcar.car_name
-        holder.cHirePrice.text=currentcar.car_hire_price
+        holder.cHirePrice.text="KSh ${currentcar.car_hire_price}"
         holder.cModel.text=currentcar.car_model
         holder.carnumSeat.text=currentcar.car_seat_capacity
         holder.cDescription.text=currentcar.car_description
@@ -42,9 +44,21 @@ class CarRecyclerAdapter(
         Glide.with(context).load(carArrayList[position].carImageUrl)
             .into(holder.cImage).toString()
 
-        holder.itemView.setOnClickListener{
-            onItemClick?.invoke(currentcar)
+        holder.card.setOnClickListener {
+            val intent=Intent(context,ViewCarDetailsActivity::class.java)
+            intent.putExtra("CAR_IMAGE",currentcar.carImageUrl)
+            intent.putExtra("CAR_PRICE",currentcar.car_hire_price)
+            intent.putExtra("CAR_CAPACITY",currentcar.car_seat_capacity)
+            intent.putExtra("CAR_DESCRIPTION",currentcar.car_description)
+
+            intent.flags=Intent.FLAG_ACTIVITY_NEW_TASK
+
+            context.startActivity(intent)
         }
+
+//        holder.itemView.setOnClickListener{
+//            onItemClick?.invoke(currentcar)
+//        }
 
 //        val intent = Intent(context, CarDetailsActivity::class.java)
 //        intent.putExtra("CAR_IMAGE",currentcar.carImageUrl)
@@ -75,6 +89,7 @@ class CarRecyclerAdapter(
         var carnumSeat:TextView=itemView.findViewById(R.id.seatCapacity_view)
         var cHirePrice:TextView=itemView.findViewById(R.id.carPrice_view)
         var cDescription:TextView=itemView.findViewById(R.id.car_description_view)
+        var card:CardView=itemView.findViewById(R.id.carItem_card)
 
     }
 

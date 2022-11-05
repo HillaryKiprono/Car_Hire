@@ -100,18 +100,6 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <!--            <EditText-->
-            <!--                android:id="@+id/search_item_bar"-->
-            <!--                android:layout_width="150dp"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_below="@id/shopping_cart"-->
-            <!--                android:layout_marginTop="8dp"-->
-            <!--                android:background="@drawable/search_bar_shape"-->
-            <!--                android:drawableStart="@drawable/ic_baseline_search_24"-->
-            <!--                android:drawablePadding="10dp"-->
-            <!--                android:hint="Search Car"-->
-            <!--                android:textColor="@color/white"-->
-            <!--                android:textColorHint="@color/white" />-->
         </RelativeLayout>
 
     </com.google.android.material.appbar.AppBarLayout>

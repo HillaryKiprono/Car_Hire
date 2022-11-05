@@ -2,6 +2,7 @@ package com.kipronohillary.carhire.activities.models.activities
 
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -33,10 +34,15 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
-        sharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+       sharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
         sharedIdValue = sharedPreferences.getInt(Utils.counter.toString(), 0)
         checkCounter()
+
+        binding.shoppingCart.setOnClickListener{
+
+            startActivity(Intent(applicationContext, CheckoutActivity::class.java))
+
+        }
 
 
         //config progress dialog
@@ -151,22 +157,6 @@ class DashboardActivity : AppCompatActivity() {
 
                     mAdapter = CarRecyclerAdapter(applicationContext,carArrayList)
                     binding.recyclerview.adapter = mAdapter
-
-
-//                    mAdapter.onItemClick={
-//                        val intent= Intent(this@DashboardActivity,ViewCarDetailsActivity::class.java)
-//                        intent.putExtra("car",it)
-//                        startActivity(intent)
-//                    }
-//
-//                    mAdapter.onItemClick={
-//                        val intent=Intent(this@DashboardActivity,CarDetailsActivity::class.java)
-//                        intent.putExtra("car",it)
-//                        startActivity(intent)
-//                    }
-
-
-
 
                 }
                 else{
