@@ -78,6 +78,7 @@
                     android:drawableStart="@drawable/ic_baseline_search_24"
                     android:drawablePadding="1dp"
                     android:hint="seats No"
+                    android:inputType="number"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     tools:ignore="TouchTargetSizeCheck" />
@@ -92,6 +93,7 @@
                     android:drawableStart="@drawable/ic_baseline_search_24"
                     android:drawablePadding="1dp"
                     android:hint="Hire Price"
+                    android:inputType="number"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />

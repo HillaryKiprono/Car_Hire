@@ -2,7 +2,6 @@ package com.kipronohillary.carhire.activities.models.activities
 
 import android.app.ProgressDialog
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,7 +10,6 @@ import android.text.TextWatcher
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.database.*
-import com.kipronohillary.carhire.R
 import com.kipronohillary.carhire.activities.models.models.CarDetails
 import com.kipronohillary.carhire.activities.models.models.Utils
 import com.kipronohillary.carhire.adapters.CarRecyclerAdapter
@@ -61,11 +59,29 @@ class DashboardActivity : AppCompatActivity() {
             }
         })
 
+        binding.searchCarByNumOfSeats.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            override fun afterTextChanged(editable: Editable) {
+                filterbyCapacity(editable.toString())
+            }
+        })
+
+        binding.searchCarByHirePrice.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            override fun afterTextChanged(editable: Editable) {
+                filterbyPrice(editable.toString())
+            }
+        })
+
 
 
         fetchCarData()
 
     }
+
+
 
     private fun checkCounter() {
         val sharedIdValue = sharedPreferences.getInt(Utils.counter.toString(), 0)
@@ -88,6 +104,30 @@ class DashboardActivity : AppCompatActivity() {
         }
         mAdapter= CarRecyclerAdapter(applicationContext, filteredList!!)
         binding.recyclerview.adapter= mAdapter
+    }
+
+    private fun filterbyCapacity(capacity: String) {
+        val filteredCapacityList=ArrayList<CarDetails>()
+        for(item in carArrayList!!){
+            if(item.car_seat_capacity?.toLowerCase()?.contains(capacity.toLowerCase())!!){
+                filteredCapacityList.add(item)
+            }
+        }
+        mAdapter= CarRecyclerAdapter(applicationContext, filteredCapacityList!!)
+        binding.recyclerview.adapter= mAdapter
+
+    }
+
+    private fun filterbyPrice(capacity: String) {
+        val filteredPriceList=ArrayList<CarDetails>()
+        for(item in carArrayList!!){
+            if(item.car_hire_price?.toLowerCase()?.contains(capacity.toLowerCase())!!){
+                filteredPriceList.add(item)
+            }
+        }
+        mAdapter= CarRecyclerAdapter(applicationContext, filteredPriceList!!)
+        binding.recyclerview.adapter= mAdapter
+
     }
 
 
