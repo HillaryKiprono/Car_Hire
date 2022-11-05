@@ -150,11 +150,11 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="14"
-                android:textSize="24sp"
                 android:textAlignment="center"
+                android:textSize="24sp"
 
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.333"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/textView3"
                 app:layout_constraintTop_toBottomOf="@+id/carmodelcart" />
 
@@ -182,9 +182,8 @@
                 android:ems="10"
                 android:textAlignment="center"
                 android:text="Image result for fielder description
-The Corolla Fielder, a 5-door station wagon released at the same time as the ninth-generation Corolla sedan, was the fourth-generation model of the Corolla wagon."
+                The Corolla Fielder, a 5-door station wagon released at the same time as the ninth-generation Corolla sedan, was the fourth-generation model of the Corolla wagon."
                 android:inputType="textMultiLine"
-
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -206,10 +205,10 @@ The Corolla Fielder, a 5-door station wagon released at the same time as the nin
                 android:id="@+id/carImagecart"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/input_type"
+                android:layout_marginTop="4dp"
+
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.534"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/car2" />
