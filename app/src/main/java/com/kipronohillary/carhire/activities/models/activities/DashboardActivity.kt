@@ -3,12 +3,17 @@ package com.kipronohillary.carhire.activities.models.activities
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.database.*
 import com.kipronohillary.carhire.R
 import com.kipronohillary.carhire.activities.models.models.CarDetails
+import com.kipronohillary.carhire.activities.models.models.Utils
 import com.kipronohillary.carhire.adapters.CarRecyclerAdapter
 import com.kipronohillary.carhire.databinding.ActivityDashboardBinding
 
@@ -20,11 +25,20 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var carArrayList : ArrayList<CarDetails>
     private lateinit var progressDialog: ProgressDialog
 
+    private val sharedPrefFile = "kotlinsharedpreference"
+    private lateinit var sharedPreferences: SharedPreferences
+    private var sharedIdValue : Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
+        sharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+        sharedIdValue = sharedPreferences.getInt(Utils.counter.toString(), 0)
+        checkCounter()
 
 
         //config progress dialog
@@ -39,10 +53,44 @@ class DashboardActivity : AppCompatActivity() {
         carArrayList = arrayListOf<CarDetails>()
 
 
+        binding.searchCarByName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            override fun afterTextChanged(editable: Editable) {
+                filter(editable.toString())
+            }
+        })
+
+
 
         fetchCarData()
 
     }
+
+    private fun checkCounter() {
+        val sharedIdValue = sharedPreferences.getInt(Utils.counter.toString(), 0)
+        if(sharedIdValue == 0){
+            binding.cartBadge.visibility=View.INVISIBLE
+
+        }
+        else if (sharedIdValue >= 1){
+            binding.cartBadge.text=sharedIdValue.toString()
+            binding.cartBadge.visibility=View.VISIBLE
+        }
+    }
+
+    fun filter(e: String) {
+        val filteredList = ArrayList<CarDetails>()
+        for (item in carArrayList!!) {
+            if (item.car_name?.toLowerCase()?.contains(e.toLowerCase())!!) {
+                filteredList.add(item)
+            }
+        }
+        mAdapter= CarRecyclerAdapter(applicationContext, filteredList!!)
+        binding.recyclerview.adapter= mAdapter
+    }
+
+
 
     private fun fetchCarData() {
         progressDialog.show()
@@ -70,12 +118,12 @@ class DashboardActivity : AppCompatActivity() {
 //                        intent.putExtra("car",it)
 //                        startActivity(intent)
 //                    }
-
-                    mAdapter.onItemClick={
-                        val intent=Intent(this@DashboardActivity,CarDetailsActivity::class.java)
-                        intent.putExtra("car",it)
-                        startActivity(intent)
-                    }
+//
+//                    mAdapter.onItemClick={
+//                        val intent=Intent(this@DashboardActivity,CarDetailsActivity::class.java)
+//                        intent.putExtra("car",it)
+//                        startActivity(intent)
+//                    }
 
 
 

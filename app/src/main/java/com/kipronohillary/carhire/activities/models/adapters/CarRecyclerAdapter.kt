@@ -1,6 +1,7 @@
 package com.kipronohillary.carhire.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,6 +45,17 @@ class CarRecyclerAdapter(
         holder.itemView.setOnClickListener{
             onItemClick?.invoke(currentcar)
         }
+
+//        val intent = Intent(context, CarDetailsActivity::class.java)
+//        intent.putExtra("CAR_IMAGE",currentcar.carImageUrl)
+//        intent.putExtra("CAR_NAME",currentcar.car_name)
+//        intent.putExtra("CAR_PRICE",currentcar.car_hire_price)
+//        intent.putExtra("CAR_MODEL",currentcar.car_model)
+//        intent.putExtra("CAR_CAPACITY",currentcar.car_seat_capacity)
+//        intent.putExtra("CAR_DESCRIPTION",currentcar.car_description)
+//        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+//
+//        context.startActivity(intent)
 
 
 

@@ -44,4 +44,5 @@ class CarDetails(
             return arrayOfNulls(size)
         }
     }
+
 }

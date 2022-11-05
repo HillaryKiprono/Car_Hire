@@ -14,7 +14,6 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import com.kipronohillary.carhire.R
 import com.kipronohillary.carhire.activities.models.models.CarDetails
 import com.kipronohillary.carhire.databinding.ActivityAddNewCarBinding
 import java.util.*
@@ -109,7 +108,6 @@ import java.util.*
               .addOnSuccessListener{
                   Log.d(TAG, "uploadImageToFirebaseStorage: Sucessfully uploaded to firebase")
                   ref.downloadUrl.addOnSuccessListener {
-                      Log.d(TAG, "uploadImageToFirebaseStorage: File location:$it")
 
                       saveCarDetailsToFirebase(it.toString())
 
