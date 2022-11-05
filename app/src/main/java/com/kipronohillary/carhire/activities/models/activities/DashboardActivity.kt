@@ -45,11 +45,6 @@ class DashboardActivity : AppCompatActivity() {
         }
 
 
-        //config progress dialog
-        progressDialog = ProgressDialog(this)
-        progressDialog.setTitle("Please wait and ensure you have Strong internet connection")
-        progressDialog.setMessage("loading car details...")
-        progressDialog.setCanceledOnTouchOutside(false)
 
 
         binding.recyclerview.hasFixedSize()
@@ -139,20 +134,19 @@ class DashboardActivity : AppCompatActivity() {
 
 
     private fun fetchCarData() {
-        progressDialog.show()
+
 
         dbRef = FirebaseDatabase.getInstance().getReference("car_Items")
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 if (snapshot.exists()) {
-                    progressDialog.dismiss()
                     for (cars in snapshot.children) {
                         val carData = cars.getValue(CarDetails::class.java)
                         carArrayList.add(carData!!)
                         binding.shimmerLayout.visibility = View.GONE
                         binding.recyclerview.visibility = View.VISIBLE
-                        progressDialog.dismiss()
+
 
                     }
 
@@ -161,7 +155,7 @@ class DashboardActivity : AppCompatActivity() {
 
                 }
                 else{
-                    progressDialog.dismiss()
+
                 }
 
 
