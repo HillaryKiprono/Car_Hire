@@ -104,12 +104,37 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:orientation="horizontal">
+
+            <!--add  several shimmer placeholder layout -->
+
+            <include layout="@layout/shimmer_placeholder_layout"></include>
+            <include layout="@layout/shimmer_placeholder_layout"></include>
+            <include layout="@layout/shimmer_placeholder_layout"></include>
+            <include layout="@layout/shimmer_placeholder_layout"></include>
+            <include layout="@layout/shimmer_placeholder_layout"></include>
+            <include layout="@layout/shimmer_placeholder_layout"></include>
+            <include layout="@layout/shimmer_placeholder_layout"></include>
+
+        </GridLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12dp"
+        android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

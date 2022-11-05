@@ -150,7 +150,8 @@ class DashboardActivity : AppCompatActivity() {
                     for (cars in snapshot.children) {
                         val carData = cars.getValue(CarDetails::class.java)
                         carArrayList.add(carData!!)
-
+                        binding.shimmerLayout.visibility = View.GONE
+                        binding.recyclerview.visibility = View.VISIBLE
                         progressDialog.dismiss()
 
                     }
