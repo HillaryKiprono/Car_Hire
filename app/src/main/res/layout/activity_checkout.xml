@@ -74,9 +74,88 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+            tools:listitem="@layout/cart_items_row"
             >
 
         </androidx.recyclerview.widget.RecyclerView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/cart_recycler"
+            android:elevation="15dp"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="8dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Subtotal"
+                    android:layout_marginLeft="6dp"
+                    android:textStyle="bold"
+                    android:id="@+id/subtotal"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="KSh 0.00"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="6dp"
+                    android:id="@+id/subtotal_value"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VAT"
+                    android:layout_below="@id/subtotal"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/vat"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="KSh 0.00"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="6dp"
+                    android:id="@+id/vat_value"
+                    android:layout_below="@id/subtotal_value"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TOTAL"
+                    android:id="@+id/total"
+                    android:layout_below="@id/vat"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="6dp"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="KSh 0.00"
+                    android:layout_alignParentRight="true"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:layout_below="@id/vat_value"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="6dp"
+                    android:id="@+id/total_value"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/total"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/checkout"
+                    android:text="CHECKOUT"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginBottom="5dp"/>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

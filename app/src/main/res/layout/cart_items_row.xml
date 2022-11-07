@@ -45,13 +45,13 @@
             android:id="@+id/add_cart_car"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_add_circle_24"
+            android:layout_below="@id/cart_item_image"
             android:layout_alignParentRight="true"
             android:layout_marginTop="8dp"
             android:layout_marginRight="6dp"
-            android:layout_below="@id/cart_item_image"/>
+            android:src="@drawable/ic_baseline_add_circle_24" />
         <TextView
-            android:id="@+id/numdays"
+            android:id="@+id/items_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
@@ -70,7 +70,7 @@
             android:layout_below="@id/cart_item_image"
             android:id="@+id/minus_cart_item"
             android:visibility="visible"
-            android:layout_toLeftOf="@id/numdays"
+            android:layout_toLeftOf="@id/items_num"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:layout_marginRight="8dp"/>
@@ -82,7 +82,7 @@
             android:visibility="invisible"
             android:layout_below="@id/cart_item_image"
             android:id="@+id/minus_cart_item_disabled"
-            android:layout_toLeftOf="@id/numdays"
+            android:layout_toLeftOf="@id/items_num"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:layout_marginRight="8dp"/>
