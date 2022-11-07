@@ -40,6 +40,17 @@
             android:layout_marginTop="5dp"
             android:layout_marginLeft="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="14 Passengers"
+            android:id="@+id/cart_item_capacity"
+            android:layout_below="@id/cart_item_price"
+           android:layout_toRightOf="@id/cart_item_image"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
 
         <ImageView
             android:id="@+id/add_cart_car"

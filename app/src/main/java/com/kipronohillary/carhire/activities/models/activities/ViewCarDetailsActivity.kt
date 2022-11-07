@@ -20,14 +20,12 @@ class ViewCarDetailsActivity : AppCompatActivity() {
         binding=ActivityViewCarDetailsBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
         //Get instance of the database and the reference
         val database = FirebaseDatabase.getInstance()
         val myRef = database.reference
 
         sharedPreferences=this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
         checkCounter()
-
         val image=intent.getStringExtra("CAR_IMAGE")
         val carModel=intent.getStringExtra("CAR_MODEL")
         val carPrice=intent.getStringExtra("CAR_PRICE")
@@ -45,7 +43,7 @@ class ViewCarDetailsActivity : AppCompatActivity() {
 
         binding.carrentbtn.setOnClickListener {
             //val cartItems = CartCar(image.toString(), carPrice.toString(), seatingCap.toString(),1)
-            val cartItems=CartCar(image.toString(),carPrice.toString(),carModel.toString(),0)
+            val cartItems=CartCar(image.toString(),carPrice.toString(),carModel.toString(),seatingCap.toString(),0.0,0)
             myRef.child("cart_items").push().setValue(cartItems)
             incrementCounter()
             finish()

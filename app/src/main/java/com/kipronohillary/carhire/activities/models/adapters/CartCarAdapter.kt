@@ -28,6 +28,7 @@ class CartCarAdapter(private val context: Context, private val carArrayList: Arr
 
         holder.car_Model.text=itm.carModel
         holder.car_Price.text="Ksh. ${itm.carHirePrice}"
+        holder.car_capacity.text=" Passengers: ${itm.carCapacity}"
 
         holder.itemNumber.text=itm.counter.toString()
 
@@ -57,6 +58,7 @@ class CartCarAdapter(private val context: Context, private val carArrayList: Arr
         val car_Image: ImageView = view.findViewById(R.id.cart_item_image)
         val car_Model: TextView = view.findViewById(R.id.cart_item_model)
         val car_Price: TextView = view.findViewById(R.id.cart_item_price)
+        val car_capacity: TextView = view.findViewById(R.id.cart_item_capacity)
         val deleteItem: ImageView = view.findViewById(R.id.delete_cart_item)
         val addItem: ImageView = view.findViewById(R.id.add_cart_car)
         val minusItem: ImageView = view.findViewById(R.id.minus_cart_item)

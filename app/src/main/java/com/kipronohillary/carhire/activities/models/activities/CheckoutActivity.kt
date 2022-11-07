@@ -42,9 +42,12 @@ class CheckoutActivity : AppCompatActivity(),ItemClickListener {
                         cartList!!.add(item!!)
                     }
                     var sum=0.0
+                    var vat = 0.0
                     var total=0.0
                     for(itm:CartCar in cartList!!){
+
                         sum+=itm.carHirePrice.toDouble()*itm.counter
+                        vat += itm.vat.toDouble()
                         total+=sum
                     }
                     binding.subtotalValue.text=sum.toString()
@@ -71,6 +74,7 @@ class CheckoutActivity : AppCompatActivity(),ItemClickListener {
         if (item.counter == 1){
 
            // binding.m.isClickable = false
+           // binding.minus
         }
         item.counter -= 1
         val mQuery : Query = mReference.orderByChild("itemName").equalTo(item.carModel)
@@ -129,6 +133,7 @@ class CheckoutActivity : AppCompatActivity(),ItemClickListener {
         val sharedIdValue = sharedPreferences.getInt(Utils.counter.toString(), 0)
 
        // items_num.text = sharedIdValue.toString()
+
     }
 
     private fun decrementCounter(num : Int){
@@ -138,6 +143,7 @@ class CheckoutActivity : AppCompatActivity(),ItemClickListener {
         editor.commit()
         val sharedIdValue = sharedPreferences.getInt(Utils.counter.toString(), 0)
         //binding.m = sharedIdValue.toString()
+        binding.subtotalValue.text=sharedIdValue.toString()
     }
 
     private fun removeItem(position : Int){
