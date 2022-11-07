@@ -48,6 +48,7 @@ class CarRecyclerAdapter(
             val intent=Intent(context,ViewCarDetailsActivity::class.java)
             intent.putExtra("CAR_IMAGE",currentcar.carImageUrl)
             intent.putExtra("CAR_PRICE",currentcar.car_hire_price)
+            intent.putExtra("CAR_MODEL",currentcar.car_model)
             intent.putExtra("CAR_CAPACITY",currentcar.car_seat_capacity)
             intent.putExtra("CAR_DESCRIPTION",currentcar.car_description)
 

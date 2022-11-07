@@ -38,12 +38,14 @@ class ViewCarDetailsActivity : AppCompatActivity() {
             .load(image)
             .into(binding.carImagecart)
 
+        binding.carmodelcart.text=carModel
         binding.carpricecart.text=carPrice
         binding.carcapacitycart.text=seatingCap
         binding.cardescriptioncart.text=carDescription
 
         binding.carrentbtn.setOnClickListener {
-            val cartItems = CartCar(image.toString(), carPrice.toString(), seatingCap.toString(),1)
+            //val cartItems = CartCar(image.toString(), carPrice.toString(), seatingCap.toString(),1)
+            val cartItems=CartCar(image.toString(),carPrice.toString(),carModel.toString(),0)
             myRef.child("cart_items").push().setValue(cartItems)
             incrementCounter()
             finish()

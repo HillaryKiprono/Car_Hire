@@ -127,6 +127,7 @@ class CheckoutActivity : AppCompatActivity(),ItemClickListener {
         editor.apply()
         editor.commit()
         val sharedIdValue = sharedPreferences.getInt(Utils.counter.toString(), 0)
+
        // items_num.text = sharedIdValue.toString()
     }
 
